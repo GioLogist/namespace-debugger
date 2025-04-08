@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Debug Namespace Filter",
+    "version": "1.0.0",
+    "description": "Toggle and count debug namespaces in the console",
+    "icons": {
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "permissions": ["storage", "scripting"],
+    "host_permissions": ["<all_urls>"],
+    "action": {
+      "default_icon": {
+        "16": "images/icon-16.png",
+        "48": "images/icon-48.png",
+        "128": "images/icon-128.png"
+      },
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "run_at": "document_start"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["injected.js"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "devtools_page": "devtools.html"
+}
